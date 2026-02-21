@@ -42,6 +42,11 @@ class CocktailRepository extends ServiceEntityRepository
             ->setMaxResults($query->itemsPerPage);
 
         return $qb->getQuery()->getResult();
+    }
 
+    public function remove(Cocktail $cocktail): void
+    {
+        $this->getEntityManager()->remove($cocktail);
+        $this->getEntityManager()->flush();
     }
 }
